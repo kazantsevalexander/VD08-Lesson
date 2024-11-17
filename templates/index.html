@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="result" verify=False>
+
+            <h2>Цитата дня: (домашнее задание): </h2>
+            <h1>"{{ text['q'] }}"</h1>
+            <h5 style="text-align: right;">{{ text['a'] }}</h5>
+
+    </div>
+    <hr><br>
+    <h1>Сайт с прогнозом погоды в любом городе мира</h1>
+
+    <form method="post">
+        <input type="text" name="city" placeholder="Введите город" required>
+        <button type="submit">Узнать погоду</button>
+    </form>
+
+    <div class="result">
+        {% if weather %}
+            <h3>Погода в {{ weather['name'] }} </h3>
+            <p>Температура: {{ weather['main']['temp'] }}</p>
+            <p>Погода: {{ weather['weather'][0]['description']}}</p>
+            <hr><br>
+        {% endif %}
+    </div>
+
+    <div class="result">
+        {% if news %}
+            <h2>Новости: </h2>
+            <ul>Температура: {{ weather['main']['temp'] }}
+                {% for article in news %}
+                    <li><a href="{{ article['url'] }}"> {{article['title']}} </a></li>
+                {% endfor %}
+            </ul>
+            <hr><br>
+        {% endif %}
+    </div>
+
+
+
+</body>
+</html>
